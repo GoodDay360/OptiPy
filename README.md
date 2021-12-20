@@ -3,6 +3,7 @@ An API or getting Optifine VersionsList/Version/Download-URL.
 # Table of contents
 - [Get Versions List](#get-versions-list)
 - [Get Specify Versions](#get-specify-versions)
+- [Download Optifine](#download-optifine)
 # Get Versions List
 This will get list of all Optifine versions. The result is shuffled.
 ```python
