@@ -10,7 +10,7 @@ headers = {
 
 def download(data):
     for info in data:
-        url = f'https://optifine.net/download?f={info.get("filename")}'
+        url = f'https://optifine.net/download?f={info.get("filename")}' #Optifine Download Link
         print(url)  
         #break  #Remove # before break if you want only 1 url.
     
