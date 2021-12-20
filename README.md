@@ -1,5 +1,5 @@
 # Optifine-API
-An API or getting Optifine VersionsList/Version/Download-URL.
+An API for getting Optifine VersionsList/Version/Download-URL.
 # Table of contents
 - [Get Versions List](#get-versions-list)
 - [Get Specify Versions](#get-specify-versions)
