@@ -1,111 +1,52 @@
 # Optifine-API
 An API for getting Optifine VersionsList/Versions/Download-URL.
 # Table of contents
+- [Installation](#installation)
 - [Get Versions List](#get-versions-list)
 - [Get Specify Versions](#get-specify-versions)
 - [Download Optifine](#download-optifine)
+# Installation
+```
+pip install optipy
+```
 # Get Versions List
-This will get list of all Optifine versions. The result is shuffled.
+This will get list of all Optifine versions.
+- The output might not show all versions in console.
+- Dump the list into file if you want to see all the versions.
 ```python
-import requests
+from optipy import getversionlist
 
-url = "https://nitroxenon-minecraft-forge-v1.p.rapidapi.com/optifine/versionlist"
-
-headers = {
-    'x-rapidapi-key': "a6f51f9ea2mshf179951f6fc0d97p1b476ejsndba62ed12b1d",
-    'x-rapidapi-host': "nitroxenon-minecraft-forge-v1.p.rapidapi.com"
-    }
-def request():
-    try:
-        r = requests.get(url, headers=headers, timeout=5)
-        print(r.text)
-    except requests.exceptions.Timeout:
-        print("Connection Timeout! Retrying...")
-        request()
-request()
+print(getversionlist())
 ```
 # Get Specify Versions
-This will get Optifine versions informations by just specify Minecraft Version.
+This will get Optifine versions informations by just specify Minecraft Version.  
+Arguments: 
+- **[ Required ]** `mcversion` is for specify minecraft version.
+- **[ Optional ]** `single` use to return only one optifine version. (Default: False)  
 ```python
-import requests
+from optipy import getversion
 
-mcversion = 1.18
-url = f"https://nitroxenon-minecraft-forge-v1.p.rapidapi.com/optifine/{mcversion}"
-
-headers = {
-    'x-rapidapi-key': "a6f51f9ea2mshf179951f6fc0d97p1b476ejsndba62ed12b1d",
-    'x-rapidapi-host': "nitroxenon-minecraft-forge-v1.p.rapidapi.com"
-    }
-def request():
-    try:
-        r = requests.get(url, headers=headers,timeout=3)
-        print(r.text)
-    except requests.exceptions.Timeout:
-        print("Connection Timeout! Retrying...")
-        request()
-request()
+print(getversion(mcversion='1.18', single=True))
 ```
 # Download Optifine
 This will get filename from version info and use different method to download it.  
-💫 Method 1 is faster then Method 2 when it downloading. Why?  
-Because method 1 use temporary url and method 2 use global url. (It just my guessed. But I already tested it.)
+💫 Method 2 is faster then Method 1 when it downloading, but request will take a while. Why?  
+- Because method 2 use temporary url and method 1 use global url. (It just my guessed. But I already tested it.)
 ## 🔰 Download Method 1
+Arguments: 
+- **[ Required ]** `mcversion` is for specify minecraft version.
+- **[ Optional ]** `single` use to return only one optifine version url. (Default: False)  
 ```python
-import requests, json
-from requests_html import HTMLSession
+from optipy import geturl
 
-mcversion = 1.18
-url = f"https://nitroxenon-minecraft-forge-v1.p.rapidapi.com/optifine/{mcversion}"
-
-headers = {
-    'x-rapidapi-key': "a6f51f9ea2mshf179951f6fc0d97p1b476ejsndba62ed12b1d",
-    'x-rapidapi-host': "nitroxenon-minecraft-forge-v1.p.rapidapi.com"
-    }
-
-def download(data):
-    for info in data:
-        session = HTMLSession()
-        r = session.get(f'https://optifine.net/adloadx?f={info.get("filename")}')
-        about = r.html.find('#Download', first=True)
-        url = "".join(about.absolute_links)  #Optifine Download Link
-        print(url)  
-        #break  #Remove # before break if you want only 1 url.
-    
-def request():
-    try:
-        r = requests.get(url, headers=headers,timeout=5)
-        data = json.loads(r.text)
-        download(data)
-    except requests.exceptions.Timeout:
-        print("Connection Timeout! Retrying...")
-        request()
-request()
+print(geturl(mcversion='1.18', single=True))
 ```
 ## 🔰 Download Method 2
+Arguments: 
+- **[ Required ]** `mcversion` is for specify minecraft version.
+- **[ Optional ]** `single` use to return only one optifine version url. (Default: False)  
 ```python
-import requests, json
+from optipy import geturl2
 
-mcversion = 1.18
-url = f"https://nitroxenon-minecraft-forge-v1.p.rapidapi.com/optifine/{mcversion}"
-
-headers = {
-    'x-rapidapi-key': "a6f51f9ea2mshf179951f6fc0d97p1b476ejsndba62ed12b1d",
-    'x-rapidapi-host': "nitroxenon-minecraft-forge-v1.p.rapidapi.com"
-    }
-
-def download(data):
-    for info in data:
-        url = f'https://optifine.net/download?f={info.get("filename")}' #Optifine Download Link
-        print(url)  
-        #break  #Remove # before break if you want only 1 url.
-    
-def request():
-    try:
-        r = requests.get(url, headers=headers,timeout=5)
-        data = json.loads(r.text)
-        download(data)
-    except requests.exceptions.Timeout:
-        print("Connection Timeout! Retrying...")
-        request()
-request()
+print(geturl2(mcversion='1.18', single=True))
 ```
