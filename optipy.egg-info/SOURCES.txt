@@ -1,0 +1,15 @@
+CHANGELOG.txt
+LICENCE.txt
+MANIFEST.in
+README.md
+setup.py
+optipy/GetURL_1.py
+optipy/GetURL_2.py
+optipy/GetVersion.py
+optipy/GetVersionsList.py
+optipy/__init__.py
+optipy.egg-info/PKG-INFO
+optipy.egg-info/SOURCES.txt
+optipy.egg-info/dependency_links.txt
+optipy.egg-info/requires.txt
+optipy.egg-info/top_level.txt
