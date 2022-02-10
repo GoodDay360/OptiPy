@@ -4,7 +4,7 @@ An API for getting Optifine VersionsList/Versions/Download-URL.
 - [Installation](#installation)
 - [Get Versions List](#get-versions-list)
 - [Get Specify Versions](#get-specify-versions)
-- [Download Optifine](#download-optifine)
+- [Get Optifine Download URL](#get-optifine-download-url)
 # Installation
 ```
 pip install optipy
@@ -28,11 +28,11 @@ from optipy import getversion
 
 print(getversion(mcversion='1.18', single=True))
 ```
-# Download Optifine
+# Get Optifine Download URL
 This will get filename from version info and use different method to download it.  
 💫 Method 2 is faster then Method 1 when it downloading, but request will take a while. Why?  
 - Because method 2 use temporary url and method 1 use global url. (It just my guessed. But I already tested it.)
-## 🔰 Download Method 1
+## 🔰 Get Download URL Method 1
 Arguments: 
 - **[ Required ]** `mcversion` is for specify minecraft version.
 - **[ Optional ]** `single` use to return only one optifine version url. (Default: False)  
@@ -41,7 +41,7 @@ from optipy import geturl
 
 print(geturl(mcversion='1.18', single=True))
 ```
-## 🔰 Download Method 2
+## 🔰 Get Download URL Method 2
 Arguments: 
 - **[ Required ]** `mcversion` is for specify minecraft version.
 - **[ Optional ]** `single` use to return only one optifine version url. (Default: False)  
