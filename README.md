@@ -1,4 +1,4 @@
-# Optifine-API
+# OptiPy
 An API for getting Optifine VersionsList/Versions/Download-URL.
 # Table of contents
 - [Installation](#installation)
