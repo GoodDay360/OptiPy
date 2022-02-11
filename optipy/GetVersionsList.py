@@ -1,5 +1,7 @@
 import requests,json,warnings
 from distutils.version import LooseVersion
+# This use to ignore sorting *LooseVersion. 
+# You can remove it if you want.
 warnings.filterwarnings('ignore')
 
 def getversionlist():
