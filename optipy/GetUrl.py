@@ -1,5 +1,6 @@
 import requests
-def getVersion(mcversion: bool = False,single: bool = False,timeout: int = 30):
+
+def getUrl(mcversion: bool = False,single: bool = False,timeout: int = 30):
     if mcversion:
         url = f"https://nitroxenon-minecraft-forge-v1.p.rapidapi.com/optifine/{mcversion}"
         headers = {
@@ -10,10 +11,13 @@ def getVersion(mcversion: bool = False,single: bool = False,timeout: int = 30):
             r = requests.get(url, headers=headers,timeout=timeout)
             data = r.json()
             if len(data) != 0:
-                if single:
-                    return data[0]
-                else:
-                    return data
+                liURL = []
+                for info in data:
+                    url = f'https://optifine.net/download?f={info.get("filename")}'
+                    liURL.append(url)  
+                    if single:
+                        break
+                return(liURL)
             else:
                 return None
         except requests.exceptions.Timeout:
@@ -23,7 +27,7 @@ def getVersion(mcversion: bool = False,single: bool = False,timeout: int = 30):
 
 if __name__ == "__main__":
     while True:
-        data = getVersion(mcversion="1.20",single=True)
+        data = getUrl(mcversion="1.18",single=True)
         if "408" not in data:
             print(data)
             break

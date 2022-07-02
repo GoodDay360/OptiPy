@@ -1,6 +1,12 @@
 Change Log
 ===========
 
-1.0.5 (2/10/2022)
+1.0.5 (10/2/2022)
 ------------------
 - First Release
+
+1.2.2 (7/2/2022)
+------------------
+- Fixed Request Time-out return None
+- Added hint arguments
+- Renamed functions

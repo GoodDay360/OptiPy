@@ -13,40 +13,44 @@ pip install optipy
 This will get list of all Optifine versions.
 - The output might not show all versions in console.
 - Dump the list into file if you want to see all the versions.
+Arguments: 
+- **[ Optional ]** `timeout` use for how long can request take before it cancel. (Default: 30)  
 ```python
-from optipy import getversionlist
+from optipy import getVersionList
 
-print(getversionlist())
+while True:
+    data = getVersionList(timeout=15)
+    if "408" not in data:
+        print(data)
+        break
 ```
 # Get Specify Versions
 This will get Optifine versions informations by just specify Minecraft Version.  
 Arguments: 
 - **[ Required ]** `mcversion` is for specify minecraft version.
 - **[ Optional ]** `single` use to return only one optifine version. (Default: False)  
+- **[ Optional ]** `timeout` use for how long can request take before it cancel. (Default: 30)  
 ```python
-from optipy import getversion
+from optipy import getVersion
 
-print(getversion(mcversion='1.18', single=True))
+while True:
+    data = getVersion(mcversion="1.18", single=True, timeout=15)
+    if "408" not in data:
+        print(data)
+        break
 ```
 # Get Optifine Download URL
 This will get filename from version info and use different method to download it.  
-💫 Method 2 is faster then Method 1 when it downloading, but request will take a while. Why?  
-- Because method 2 use temporary url and method 1 use global url. (It just my guessed. But I already tested it.)
-## 🔰 Get Download URL Method 1
 Arguments: 
 - **[ Required ]** `mcversion` is for specify minecraft version.
 - **[ Optional ]** `single` use to return only one optifine version url. (Default: False)  
+- **[ Optional ]** `timeout` use for how long can request take before it cancel. (Default: 30)  
 ```python
-from optipy import geturl
+from optipy import getUrl
 
-print(geturl(mcversion='1.18', single=True))
-```
-## 🔰 Get Download URL Method 2
-Arguments: 
-- **[ Required ]** `mcversion` is for specify minecraft version.
-- **[ Optional ]** `single` use to return only one optifine version url. (Default: False)  
-```python
-from optipy import geturl2
-
-print(geturl2(mcversion='1.18', single=True))
+while True:
+    data = getUrl(mcversion="1.18", single=True, timeout=15)
+    if "408" not in data:
+        print(data)
+        break
 ```
