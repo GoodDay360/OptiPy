@@ -46,5 +46,5 @@ def start(mc_version):
     return DATA
 
 if __name__ == "__main__":
-    DATA = start(mc_version="1.20.1")
+    DATA = start(mc_version="1.12.2")
     pprint(DATA, sort_dicts=False)
