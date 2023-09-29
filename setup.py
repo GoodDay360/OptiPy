@@ -13,7 +13,7 @@ with open('./requirements.txt', "r", encoding='utf-16') as f:
 
 setup(
   name='optipy',
-  version='2.0.0',
+  version='2.0.1',
   description='Web Scraping API for getting Optifine VersionsList/Versions/Download-URL.',
   long_description=open('README.md').read() + '\n\n' + open('CHANGELOG.txt').read(),
   long_description_content_type='text/markdown',
@@ -25,4 +25,5 @@ setup(
   keywords=['optifine','api','optifine_api'], 
   packages=find_packages(exclude=["dist","git","optipy.egg-info","venv"]),
   install_requires=required_packages,
+  python_requires='>=3.6',
 )

@@ -1,1 +1,5 @@
 global-include *.md *.txt *.py
+global-exclude venv
+global-exclude main.py
+prune venv
+

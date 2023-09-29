@@ -1,0 +1,55 @@
+Metadata-Version: 2.1
+Name: optipy
+Version: 2.0.1
+Summary: Web Scraping API for getting Optifine VersionsList/Versions/Download-URL.
+Home-page: https://github.com/GoodDay360/OptiPy
+Author: GoodDay360
+Author-email: istartgame31@gmail.com
+License: MIT
+Keywords: optifine,api,optifine_api
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Information Technology
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# OptiPy
+Web Scraping API for getting Optifine VersionsList/Versions/Download-URL.
+# Table of contents
+- [Installation](#installation)
+- [Get Versions List](#get-versions-list)
+- [Get Specify Versions](#get-specify-versions)
+# Installation
+```
+pip install optipy
+```
+# Get Versions List
+This will get list of all Optifine versions.
+- The output might not show all versions in console.
+- Dump the list into file if you want to see all the versions.
+```python
+from optipy import getVersionList
+
+DATA = getVersionList()
+print(DATA)
+```
+# Get Specify Versions
+This will get Optifine versions informations by just specify Minecraft Version.  
+Arguments: 
+- **[ Required ]** `mc_version` is for specify minecraft version.
+```python
+from optipy import getVersion
+
+DATA = getVersion(mc_version="1.12.2")
+print(DATA)
+```
+
+Change Log
+===========
+
+2.0.0 (7/2/2022)
+------------------
+- Rewrite the script to local web scraping for better performance.

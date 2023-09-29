@@ -1,0 +1,14 @@
+CHANGELOG.txt
+LICENSE
+MANIFEST.in
+README.md
+requirements.txt
+setup.py
+optipy/__init__.py
+optipy/_get_version.py
+optipy/_get_version_list.py
+optipy.egg-info/PKG-INFO
+optipy.egg-info/SOURCES.txt
+optipy.egg-info/dependency_links.txt
+optipy.egg-info/requires.txt
+optipy.egg-info/top_level.txt
