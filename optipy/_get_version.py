@@ -3,21 +3,21 @@ from urllib.parse import urlparse, parse_qs
 import requests
 from pprint import pprint
 
-DATA = {}
+def start(mc_version):
+    DATA = {}
 
-url = "https://www.optifine.net/downloads"
-response = requests.get(url)
+    url = "https://www.optifine.net/downloads"
+    response = requests.get(url)
 
-soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(response.text, "html.parser")
 
-h2_elements = soup.find_all("h2")
-
-for h2 in h2_elements:
+    h2 = soup.find("h2", string=f'Minecraft {mc_version}')
+    if not h2: return None
     mc_version = f'{h2.text.replace("Minecraft ","")}'
 
-    # Find the next 'table' element after 'h2' element
     table_element = h2.find_next("table", {"class": "downloadTable"})
-
+    
+    
     if table_element:
         title = table_element.find("td", class_="colFile").text
         date = table_element.find("td", class_="colDate").text
@@ -40,6 +40,8 @@ for h2 in h2_elements:
             "forge": forge,
             "url": url,
         }
+    return DATA
 
-
-pprint(DATA, sort_dicts=False)
+if __name__ == "__main__":
+    DATA = start(mc_version="1.20.1")
+    pprint(DATA, sort_dicts=False)
