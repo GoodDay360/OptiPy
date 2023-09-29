@@ -1,4 +1,4 @@
-from optipy import getVersionList
+from optipy import getVersion
 
-DATA = getVersionList()
+DATA = getVersion(mc_version="1.12.2")
 print(DATA)

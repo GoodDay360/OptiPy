@@ -14,7 +14,7 @@ with open('./requirements.txt', "r", encoding='utf-16') as f:
 setup(
   name='optipy',
   version='2.0.0',
-  description='An API for getting Optifine VersionsList/Version/Download-URL.',
+  description='Web Scraping API for getting Optifine VersionsList/Versions/Download-URL.',
   long_description=open('README.md').read() + '\n\n' + open('CHANGELOG.txt').read(),
   long_description_content_type='text/markdown',
   url='https://github.com/GoodDay360/OptiPy',  

@@ -1,5 +1,5 @@
 # OptiPy
-An API for getting Optifine VersionsList/Versions/Download-URL.
+Web Scraping API for getting Optifine VersionsList/Versions/Download-URL.
 # Table of contents
 - [Installation](#installation)
 - [Get Versions List](#get-versions-list)
@@ -25,6 +25,6 @@ Arguments:
 ```python
 from optipy import getVersion
 
-DATA = getVersion(mc_version="1.20.1")
+DATA = getVersion(mc_version="1.12.2")
 print(DATA)
 ```
