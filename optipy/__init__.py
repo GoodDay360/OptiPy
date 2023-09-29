@@ -1,3 +1,3 @@
-from .GetUrl import getUrl
-from .GetVersion import getVersion
-from .GetVersionsList import getVersionList
+from .get_url import getUrl
+from .get_version import getVersion
+from .get_version_list import getVersionList
