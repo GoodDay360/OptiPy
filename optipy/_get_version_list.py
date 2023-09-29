@@ -20,27 +20,31 @@ def start():
         table_element = h2.find_next("table", {"class": "downloadTable"})
 
         if table_element:
-            title = table_element.find("td", class_="colFile").text
-            date = table_element.find("td", class_="colDate").text
-            forge = table_element.find("td", class_="colForge").text
-            mirror = table_element.find("td", class_="colMirror")
-            mirror_link = mirror.find("a").get("href")
-            parsed_link = urlparse(mirror_link)
-            
-            
-            # Parse the query string into a dictionary
-            args = parse_qs(parsed_link.query)
+            tr_elements = table_element.find_all("tr",{"class": "downloadLine"})
+            if not tr_elements: return None
+            item = []
+            for tr in tr_elements:
+                title = tr.find("td", class_="colFile").text
+                date = tr.find("td", class_="colDate").text
+                forge = tr.find("td", class_="colForge").text
+                mirror = tr.find("td", class_="colMirror")
+                mirror_link = mirror.find("a").get("href")
+                parsed_link = urlparse(mirror_link)
+                
+                
+                # Parse the query string into a dictionary
+                args = parse_qs(parsed_link.query)
 
-            # Get the value of 'f'
-            f_value = args["f"][0]
-            url = f"https://optifine.net/download?f={f_value}"
-
-            DATA[mc_version] = {
-                "title": title,
-                "date": date,
-                "forge": forge,
-                "url": url,
-            }
+                # Get the value of 'f'
+                f_value = args["f"][0]
+                url = f"https://optifine.net/download?f={f_value}"
+                item.append({
+                    "title": title,
+                    "date": date,
+                    "forge": forge,
+                    "url": url,
+                })
+            DATA[mc_version] = item
     return DATA
 
 if __name__ == "__main__":
